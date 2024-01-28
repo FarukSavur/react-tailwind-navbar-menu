@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .menu-item-container {
+        @apply     p-2 transition-all hover:bg-slate-100 rounded-md;
+    }
+    .menu-item {
+        @apply flex items-center gap-2 font-mulish text-lg font-[500];
+    }
+}
