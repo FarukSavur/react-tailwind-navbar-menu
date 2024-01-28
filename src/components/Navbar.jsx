@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classNames from 'classnames';
+import Flag from 'react-flagkit';
+
 
 import { HiMenu } from "react-icons/hi"
 import { FaUser } from "react-icons/fa"
@@ -16,37 +18,38 @@ import { TbTextCaption } from "react-icons/tb";
 import { BsPersonVcard } from "react-icons/bs";
 import { BsShop } from "react-icons/bs";
 import { IoCodeWorkingSharp } from "react-icons/io5";
+import { FaDownload } from "react-icons/fa6";
+import { BsMoonStars } from "react-icons/bs";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
         <>
-            <header>
-                <div className='h-16 w-full sticky top-0 bg-zinc-100 border-b border-gray-300 flex items-center justify-between px-6'>
+            <header className='fixed top-0 w-full'>
+
+                <div className='h-16 w-full bg-white/50 backdrop-blur z-10 border-b border-gray-300 flex items-center justify-between px-2 md:px-6'>
                     <button onClick={() => {
                         setIsMenuOpen(() => !isMenuOpen)
                     }}>
                         <HiMenu size={28} />
                     </button>
-                    <h1 className='text-3xl font-montserrat font-bold'>
+                    <h1 className='text-2xl md:text-3xl font-montserrat font-bold'>
                         Sosyal Kampüs
                     </h1>
                     <button>
                         <FaUser size={23} />
                     </button>
                 </div>
-
             </header>
-
             <div className={classNames({
                 'fixed inset-0 w-full h-full transition-all': true,
-                'bg-black/50 opacity-100 visible': isMenuOpen,
+                'bg-zinc-900/20 backdrop-blur opacity-100 visible': isMenuOpen,
                 'opacity-0 invisible ': !isMenuOpen,
             })} >
 
                 <nav className={classNames({
-                    'max-w-full w-80 h-full bg-white duration-500 rounded-e-3xl border-r-8 border-r-amber-300': true,
+                    'max-w-full w-80 h-full bg-white duration-500 rounded-e-3xl border-r-8 border-r-amber-400 flex flex-col justify-between overflow-hidden': true,
                     '-translate-x-10 skew-x-6': !isMenuOpen,
                     'translate-x-0 skew-x-0': isMenuOpen,
                 })}>
@@ -65,8 +68,9 @@ export default function Navbar() {
 
                         </button>
                     </header>
-                    <div className='py-2 px-1'>
-                        <h6 className='text-xl font-[500] font-poppins mt-3 ms-3 ps-2 border-l-4 border-l-amber-300 -tracking-wide'>
+
+                    <div className='py-2 px-1 mb-auto overflow-auto'>
+                        <h6 className='text-xl font-[500] font-poppins mt-3 ms-3 ps-2 border-l-4 border-l-amber-400 -tracking-wide'>
                             Sosyal Kampüsü Keşfet
                         </h6>
                         <ul className='p-2'>
@@ -144,6 +148,20 @@ export default function Navbar() {
                                 </a>
                             </li>
                         </ul>
+                    </div>
+
+                    <div className='w-full h-16 flex items-center border-t border-zinc-200 gap-2 px-4'>
+                        <button className='h-9 px-1 flex-1 flex items-center justify-center bg-amber-400 gap-2 rounded-md text-gray-50'>
+                            <FaDownload size={18} />
+                            Yükle
+                        </button>
+                        <button className='h-9 px-2 flex-1 flex items-center justify-center bg-zinc-800 gap-2 rounded-md text-gray-50'>
+                            <BsMoonStars size={18} />
+                            Sistem
+                        </button>
+                        <button className='h-9 flex items-center bg-slate-50 gap-2 rounded-md text-gray-50'>
+                            <Flag country="TR" size={50} className='rounded' />
+                        </button>
                     </div>
                 </nav>
 

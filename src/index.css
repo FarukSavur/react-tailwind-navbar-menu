@@ -3,10 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-    .menu-item-container {
-        @apply     p-2 transition-all hover:bg-slate-100 rounded-md;
+    body {
+        @apply font-mulish
     }
+
+    .menu-item-container {
+        @apply p-2 transition-all hover:bg-slate-100 rounded-md;
+    }
+
     .menu-item {
-        @apply flex items-center gap-2 font-mulish text-lg font-[500];
+        @apply flex items-center gap-2 mt-1 text-lg font-[500];
     }
 }
