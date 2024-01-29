@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classNames from 'classnames';
 import Flag from 'react-flagkit';
+import { NavLink } from 'react-router-dom';
 
 
 import { HiMenu } from "react-icons/hi"
@@ -20,6 +21,15 @@ import { BsShop } from "react-icons/bs";
 import { IoCodeWorkingSharp } from "react-icons/io5";
 import { FaDownload } from "react-icons/fa6";
 import { BsMoonStars } from "react-icons/bs";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GoSearch } from "react-icons/go";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { PiChartScatter } from "react-icons/pi";
+import { PiUserList } from "react-icons/pi";
+import { PiArchiveBoxLight } from "react-icons/pi";
+import { IoBugOutline } from "react-icons/io5";
+import { LuLogOut } from "react-icons/lu";
+
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,7 +37,6 @@ export default function Navbar() {
     return (
         <>
             <header className='fixed top-0 w-full'>
-
                 <div className='h-16 w-full bg-white/50 backdrop-blur z-10 border-b border-gray-300 flex items-center justify-between px-2 md:px-6'>
                     <button onClick={() => {
                         setIsMenuOpen(() => !isMenuOpen)
@@ -37,8 +46,45 @@ export default function Navbar() {
                     <h1 className='text-2xl md:text-3xl font-montserrat font-bold'>
                         Sosyal Kampüs
                     </h1>
-                    <button>
+                    <button className='group relative'>
                         <FaUser size={23} />
+                        <div className='opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:top-11 top-10 duration-500 absolute right-0  px-2 py-4 w-56 bg-slate-50 shadow rounded-md '>
+                            <nav className='flex flex-col gap-1'>
+                                <NavLink to='/ayarlar-ve-guvenlik' className='user-dropdown'>
+                                    <IoSettingsOutline size={19}/>
+                                    Ayarlar ve güvenlik
+                                </NavLink>
+                                <NavLink to='/kullanici-ara' className='user-dropdown'>
+                                    <GoSearch size={19}/>
+                                    Kullanıcılarda ara
+                                </NavLink>
+                                <NavLink to='/kaydedilenler' className='user-dropdown'>
+                                    <IoBookmarkOutline size={19}/>
+                                    Kaydedilenler
+                                </NavLink>
+                                <NavLink to='/hareketlerin' className='user-dropdown'>
+                                    <PiChartScatter size={19}/>
+                                    Hareketlerin
+                                </NavLink>
+                                <NavLink to='/profilim' className='user-dropdown'>
+                                    <PiUserList size={19}/>
+                                    Profilim
+                                </NavLink>
+                                <NavLink to='/arsiv' className='user-dropdown'>
+                                    <PiArchiveBoxLight size={19}/>
+                                    Arşiv
+                                </NavLink>
+                                <NavLink to='/sorun-bildir' className='user-dropdown'>
+                                    <IoBugOutline size={19}/>
+                                    Sorun bildir
+                                </NavLink>
+                                <NavLink to='/cikis-yap' className='user-dropdown bg-red-100 hover:bg-red-200 text-red-800'>
+                                    <LuLogOut size={19}/>
+
+                                    Çıkış yap
+                                </NavLink>
+                            </nav>
+                        </div>
                     </button>
                 </div>
             </header>
@@ -65,7 +111,6 @@ export default function Navbar() {
                             setIsMenuOpen(() => !isMenuOpen)
                         }}>
                             <IoMdClose size={24} />
-
                         </button>
                     </header>
 
@@ -74,78 +119,77 @@ export default function Navbar() {
                             Sosyal Kampüsü Keşfet
                         </h6>
                         <ul className='p-2'>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='/' className='menu-item'>
                                     <IoHome size={20} />
                                     Anasayfa
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='akis-fotograflar' className='menu-item'>
                                     <FaPanorama size={20} />
                                     Akış fotoğraflar
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='akis-gonderiler' className='menu-item'>
                                     <LuText size={20} />
-
                                     Akış Gönderiler
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='mesajlar' className='menu-item'>
                                     <MdMessage size={20} />
                                     Mesajlar
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='sehrimdeki-ogrenciler' className='menu-item'>
                                     <FaCity size={20} />
                                     Şehrimdeki Öğrenciler
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='makaleler' className='menu-item'>
                                     <PiArticleMediumFill size={20} />
                                     Makaleler
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='kampus-sozluk' className='menu-item'>
                                     <FaBookBookmark size={20} />
                                     Soru & Cevap
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='kampus-sohbet' className='menu-item'>
                                     <FaEarthEurope size={20} />
                                     Kampüs Sohbet
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='bilgi-yarismasi' className='menu-item'>
                                     <TbTextCaption size={20} />
                                     Bilgi Yarışması
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='ozgecmis-hazirla' className='menu-item'>
                                     <BsPersonVcard size={20} />
                                     Özgeçmiş Hazırla
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='esya-al-sat' className='menu-item'>
                                     <BsShop size={20} />
                                     Eşya Al & Sat
-                                </a>
+                                </NavLink>
                             </li>
-                            <li className='menu-item-container'>
-                                <a href="" className='menu-item'>
+                            <li>
+                                <NavLink to='is-ilanlari' className='menu-item'>
                                     <IoCodeWorkingSharp size={20} />
                                     İş İlanları
-                                </a>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
